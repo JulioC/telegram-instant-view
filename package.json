@@ -1,0 +1,26 @@
+{
+    "name": "telegram-instant-view",
+    "displayName": "Telegram Instant View",
+    "description": "Language support for Telegram Instant View templates",
+    "version": "0.0.1",
+    "publisher": "julioc0",
+    "engines": {
+        "vscode": "^1.12.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "iv",
+            "aliases": ["Telegram Instant View", "iv"],
+            "extensions": [".iv"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "iv",
+            "scopeName": "source.iv",
+            "path": "./syntaxes/iv.tmLanguage.json"
+        }]
+    }
+}

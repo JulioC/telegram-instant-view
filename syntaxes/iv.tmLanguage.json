@@ -1,0 +1,112 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Telegram Instant View",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#conditions"
+		},
+		{
+			"include": "#replace-alias"
+		},
+		{
+			"include": "#property"
+		},
+		{
+			"include": "#tag"
+		}
+	],
+	"repository": {
+		"comments": {
+			"begin": "#",
+			"captures": {
+				"0": {
+					"name": "punctuation.definition.comment.iv"
+				}
+			},
+			"end": "$",
+			"name": "comment.block.iv"
+		},
+		"strings": {
+			"name": "string.quoted.iv",
+			"match": "(\\\")(?:[^\\\"]|\\.)*(\\\"|$)",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.string.begin.iv"
+				},
+				"2": {
+					"name": "punctuation.definition.string.end.iv"
+				}
+			}
+		},
+		"variables": {
+			"name": "variable.other.iv",
+			"match": "\\$(?:\\$|@|[a-z][a-z0-9_]*)"
+		},
+		"functions": {
+			"match": "(\\s*)(@(?:debug|remove|match|replace|urlencode|urldecode|datetime|set_attr|set_attrs|background_to_image|json_to_xml|prepend_to|append_to|before_el|after_el|prepend|append|before|after|replace_tag|wrap|clone|detach|pre|combine|inline|unsupported|simplify|function)\\b)",
+			"name": "support.function.iv"
+		},
+		"conditions": {
+			"patterns": [
+				{
+					"name": "keyword.control.iv",
+					"match": "(\\s*)([?!](?:domain|domain_not|path|path_not)\b)((?:[^\\#]|\\.)*)"
+				},
+				{
+					"name": "keyword.control.iv",
+					"match": "(\\s*)([?!](?:exists|not_exists|false|true|condition)\\b)"
+				}
+			]
+		},
+		"replace-alias": {
+			"name": "meta.tag.iv",
+			"match": "(<)([a-z0-9-]+)(>)",
+			"begin": "<",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.tag.begin.iv"
+				},
+				"2": {
+					"name": "entity.name.tag.iv"
+				},
+				"3": {
+					"name": "punctuation.definition.tag.end.iv"
+				}
+			}
+		},
+		"property": {
+			"name": "variable.other.iv",
+			"match": "(\\s*)([a-z][a-z0-9_]*)(!{0,2})"
+		},
+		"tag": {
+			"match": "(\\/)(?:(?:([a-z0-9-]+)(\\:\\:))?([a-z0-9_-]+|\\*))?",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.iv"
+				},
+				"2": {
+					"name": "entity.name.tag.iv"
+				},
+				"3": {
+					"name": "punctuation.definition.iv"
+				},
+				"4": {
+					"name": "entity.name.tag.iv"
+				}
+			}
+		}
+	},
+	"scopeName": "source.iv"
+}
